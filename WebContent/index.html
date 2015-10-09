@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+	<h2>302 Responses</h2>
+	<a href="do302?name=Carlos">Regular GET: Go!</a>
+	<a id="ajaxGet302" href="#">AJAX GET: Go!</a>
+	<form action="do302" method="POST">
+		<input type="hidden" id="name" name="name" value="Jorge" />
+		<input type="submit" value="POST Request" />
+	</form>
+	<h2>307 Responses</h2>
+	<a href="do307?name=Carlos">Regular GET: Go!</a>
+	<a id="ajaxGet307" href="#">AJAX GET: Go!</a>
+	<form action="do307" method="POST">
+		<input type="hidden" id="name" name="name" value="Jorge" />
+		<input type="submit" value="POST Request" />
+	</form>
+</body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#ajaxGet302').click(function() {
+			$.ajax({
+				url: "do302",
+				data: { name: "Andres" },
+				type: "GET",
+				success: function(data, status, xhr) {
+					alert("SUCCESS! Data: " + data);
+				},
+				error: function(xhr, status, error) {
+					alert("ERROR! Status: " + xhr.status);
+				},
+				complete: function(xhr, status) {
+					alert("COMPLETE! Status: " + xhr.status);
+				}
+			});
+		});
+		$('#ajaxGet307').click(function() {
+			$.ajax({
+				url: "do307",
+				data: { name: "Andres" },
+				type: "GET",
+				success: function(data, status, xhr) {
+					alert("SUCCESS! Data: " + data);
+				},
+				error: function(xhr, status, error) {
+					alert("ERROR! Status: " + xhr.status);
+				},
+				complete: function(xhr, status) {
+					alert("COMPLETE! Status: " + xhr.status);
+				}
+			});
+		});
+	});
+</script>
+</html>
